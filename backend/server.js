@@ -2,7 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
 const axios = require('axios');
-const { getAppointmentById, fetchAppointments, createAppointment, updateAppointment, getAppointmentTypes } = require('./dao');  // Adjust the path as necessary
+const { getAppointmentById, fetchAppointments, createAppointment, updateAppointment, getAppointmentTypes, deleteAppointment } = require('./dao');  // Adjust the path as necessary
 
 const app = express();
 const port = process.env.PORT || 8080;
@@ -54,6 +54,23 @@ app.put('/appointments/:id', async (req, res) => {
         res.status(200).send(updatedAppointment);
     } catch (error) {
         console.error('Error updating appointment:', error);
+        res.status(500).send({ message: 'Internal Server Error' });
+    }
+});
+
+app.delete('/appointments/:id', async (req, res) => {
+    const { id } = req.params;
+
+    try {
+        const deletedAppointment = await deleteAppointment(id, req.body);
+
+        if (deletedAppointment === null) {
+            return res.status(404).send({ message: 'Appointment not found' });
+        }
+
+        res.status(202).send(deletedAppointment);
+    } catch (error) {
+        console.error('Error deleting appointment:', error);
         res.status(500).send({ message: 'Internal Server Error' });
     }
 });

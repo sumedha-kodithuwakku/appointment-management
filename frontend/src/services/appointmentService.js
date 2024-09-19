@@ -74,3 +74,11 @@ export const fetchAppointmentTypes = async () => {
     throw error;
   }
 };
+
+export const cancelAppointment = async (appointmentId) => {
+    try {
+        await api.delete(`/appointments/${appointmentId}`);
+    } catch (error) {
+        throw new Error('Failed to cancel appointment');
+    }
+};
