@@ -74,7 +74,7 @@ paths:
           required: true
           description: ID of the appointment to delete
       responses:
-        '200':
+        '202':
           description: Appointment deleted successfully
         '400':
           description: Missing or invalid parameters
