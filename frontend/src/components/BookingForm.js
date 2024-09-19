@@ -195,34 +195,76 @@ const BookingForm = ({ userDetails, handleOpenSnackbar, onBookingSuccess }) => {
                 )}
             </TextField>
             <LocalizationProvider dateAdapter={AdapterDateFns}>
-                <DateTimePicker
-                    label="Appointment Date"
-                    value={appointmentDate}
-                    onChange={(newValue) => setAppointmentDate(newValue)}
-                    slotProps={{
-                        textField: {
-                            variant: 'outlined',
-                            fullWidth: true,
-                            margin: 'normal',
-                            error: !!errors.appointmentDate,
-                            helperText: errors.appointmentDate,
-                            InputProps: {
-                                sx: {
-                                  '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
-                                    borderColor: '#1B4571',
-                                  },
+              <DateTimePicker
+                label="Appointment Date"
+                value={appointmentDate}
+                onChange={(newValue) => setAppointmentDate(newValue)}
+                viewRenderers={{
+                  hours: null,
+                  minutes: null,
+                  seconds: null,
+                }}
+                slotProps={{
+                  textField: {
+                    variant: 'outlined',
+                    fullWidth: true,
+                    margin: 'normal',
+                    error: !!errors.appointmentDate,
+                    helperText: errors.appointmentDate,
+                    InputProps: {
+                      sx: {
+                        '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+                          borderColor: '#1B4571',
+                        },
+                      },
+                    },
+                    InputLabelProps: {
+                      sx: {
+                        '&.Mui-focused': {
+                          color: '#1B4571',
+                        },
+                      },
+                    },
+                  },
+                  actionBar: {
+                    sx: {
+                      '& .MuiPickersToolbar-penIconButton': {
+                        color: '#1B4571', // Change the color of the pen icon
+                      },
+                    },
+                  },
+                  tabs: {
+                    sx: {
+                      '& .MuiTabs-indicator': {
+                        backgroundColor: '#1B4571', // Change the color of the indicator
+                      },
+                    },
+                  },
+                  day: {
+                    sx: {
+                      '&.Mui-selected': {
+                        backgroundColor: '#1B4571', // Change the background color of the selected day
+                        color: '#fff', // Change the text color of the selected day
+                        '&:hover': {
+                          backgroundColor: '#145a8d', // Change the background color on hover
+                        },
+                        '&.MuiPickersDay-today': {
+                            borderColor: '#1B4571', // Change the border color of today's date
+                        },    
+                        '&.MuiPickersDay-dayWithMargin': {
+                            '&.Mui-selected': {
+                                backgroundColor: '#1B4571', // Change the background color of the selected day with margin
+                                color: '#fff', // Change the text color of the selected day with margin
+                                '&:hover': {
+                                    backgroundColor: '#145a8d', // Change the background color on hover
                                 },
                             },
-                            InputLabelProps: {
-                                sx: {
-                                    '&.Mui-focused': {
-                                        color: '#1B4571', 
-                                    },
-                                },
-                            },                                                     
-                        }
-                    }} 
-                />
+                        },                                            
+                      },
+                    },
+                  },
+                }}
+              />
             </LocalizationProvider>
             <Button 
               type="submit" 
