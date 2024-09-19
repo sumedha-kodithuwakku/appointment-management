@@ -1,7 +1,7 @@
 // LoginPage.js
 import React from 'react';
-import { Button, Typography, Box, Paper, Container } from '@mui/material';
 import backgroundImage from './login-background.webp'; // Ensure this path is correct
+import { Button, Box, Container } from '@mui/material';
 
 const LoginPage = () => {
     return (
@@ -15,34 +15,28 @@ const LoginPage = () => {
                 display: 'flex',
                 justifyContent: 'center',
                 alignItems: 'center',
+                flexDirection: 'column',
             }}
         >
-            <Container maxWidth="xs">
-                <Paper
-                    elevation={3}
-                    sx={{
-                        padding: 4,
-                        display: 'flex',
-                        flexDirection: 'column',
-                        alignItems: 'center',
-                        backgroundColor: 'rgba(255, 255, 255, 0.8)', // Slightly transparent white
+            <Container maxWidth="xs" sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+            <img 
+                src={`${process.env.PUBLIC_URL}/logo-transparent.png`} 
+                alt="CareConnect" 
+                style={{ width: '600px', marginBottom: '60px', marginTop: '-150px'}} // Adjust the margin as needed
+            />
+                <Button
+                    variant="contained"
+                    sx={{ 
+                        mt: 2,
+                        backgroundColor: '#1B4571', 
+                        '&:hover': {
+                          backgroundColor: '#163A5E', // Adjust this color as needed
+                        },
                     }}
+                    onClick={() => window.location.href = "/auth/login"}
                 >
-                    <Typography variant="h4" component="h1" gutterBottom sx={{ textAlign: 'center' }}>
-                        Welcome to CareConnect
-                    </Typography>
-                    <Typography variant="subtitle1" gutterBottom sx={{ mb: 2, textAlign: 'center' }}>
-                        Your gateway to health and wellness
-                    </Typography>
-                    <Button
-                        variant="contained"
-                        color="primary"
-                        sx={{ mt: 2 }}
-                        onClick={() => window.location.href = "/auth/login"}
-                    >
-                        Login
-                    </Button>
-                </Paper>
+                    Login
+                </Button>
             </Container>
         </Box>
     );

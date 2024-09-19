@@ -118,6 +118,20 @@ const BookingForm = ({ userDetails, handleOpenSnackbar, onBookingSuccess }) => {
                 fullWidth
                 margin="normal"
                 variant="outlined"
+                InputProps={{
+                    sx: {
+                      '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+                        borderColor: '#1B4571',
+                      },
+                    },
+                }}
+                InputLabelProps={{
+                    sx: {
+                        '&.Mui-focused': {
+                            color: '#1B4571', // Set the label color when focused
+                        },
+                    },
+                }}                
             />
             <TextField
                 label="Phone Number"
@@ -129,6 +143,20 @@ const BookingForm = ({ userDetails, handleOpenSnackbar, onBookingSuccess }) => {
                 margin="normal"
                 variant="outlined"
                 type="tel" // Suggests to browsers that this input should be treated as a telephone number
+                InputProps={{
+                    sx: {
+                      '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+                        borderColor: '#1B4571',
+                      },
+                    },
+                }} 
+                InputLabelProps={{
+                    sx: {
+                        '&.Mui-focused': {
+                            color: '#1B4571', // Set the label color when focused
+                        },
+                    },
+                }}                               
             />
             <TextField
                 select
@@ -141,6 +169,20 @@ const BookingForm = ({ userDetails, handleOpenSnackbar, onBookingSuccess }) => {
                 margin="normal"
                 variant="outlined"
                 disabled={loadingServices}  // Disable the field while loading
+                InputProps={{
+                    sx: {
+                      '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+                        borderColor: '#1B4571',
+                      },
+                    },
+                }} 
+                InputLabelProps={{
+                    sx: {
+                        '&.Mui-focused': {
+                            color: '#1B4571', // Set the label color when focused
+                        },
+                    },
+                }}                                
             >
                 {loadingServices ? (
                     <MenuItem disabled>Loading...</MenuItem>
@@ -164,24 +206,50 @@ const BookingForm = ({ userDetails, handleOpenSnackbar, onBookingSuccess }) => {
                             margin: 'normal',
                             error: !!errors.appointmentDate,
                             helperText: errors.appointmentDate,
+                            InputProps: {
+                                sx: {
+                                  '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+                                    borderColor: '#1B4571',
+                                  },
+                                },
+                            },
+                            InputLabelProps: {
+                                sx: {
+                                    '&.Mui-focused': {
+                                        color: '#1B4571', 
+                                    },
+                                },
+                            },                                                     
                         }
-                    }}
+                    }} 
                 />
             </LocalizationProvider>
-            <Button type="submit" variant="contained" color="primary" fullWidth style={{ marginTop: 20, position: 'relative' }} disabled={isBooking}>
-                Book Appointment
-                {isBooking && (
-                    <CircularProgress
-                        size={24}
-                        style={{
-                            position: 'absolute',
-                            top: '50%',
-                            left: '50%',
-                            marginTop: -12,
-                            marginLeft: -12,
-                        }}
-                    />
-                )}
+            <Button 
+              type="submit" 
+              variant="contained" 
+              sx={{ 
+                backgroundColor: '#1B4571', 
+                '&:hover': {
+                  backgroundColor: '#163A5E', // Adjust this color as needed
+                },
+              }} 
+              fullWidth 
+              style={{ marginTop: 20, position: 'relative' }} 
+              disabled={isBooking}
+            >
+              Book Appointment
+              {isBooking && (
+                <CircularProgress
+                  size={24}
+                  style={{
+                    position: 'absolute',
+                    top: '50%',
+                    left: '50%',
+                    marginTop: -12,
+                    marginLeft: -12,
+                  }}
+                />
+              )}
             </Button>
         </form>
     );

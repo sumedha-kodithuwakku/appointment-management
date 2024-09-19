@@ -90,22 +90,25 @@ function App() {
       <Container component="main" maxWidth={false} disableGutters>
         <CssBaseline>
           <Router>
-            <AppBar position="static" color="primary">
-              <Toolbar>
-                <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-                  CareConnect - Your Gateway to Health and Wellness
-                </Typography>
-                {loggedIn && (
-                  <IconButton color="inherit" onClick={handleLogout}>
-                    <ExitToAppIcon />
-                  </IconButton>
-                )}
-              </Toolbar>
-            </AppBar>
             <Routes>
               <Route path="/login" element={<LoginPage />} />
               <Route element={<ProtectedRoute isLoggedIn={loggedIn} />}>
                 <Route path="/" element={
+                <>
+                {loggedIn && (
+                  <AppBar position="static" sx={{ backgroundColor: '#1B4571' }}>
+                    <Toolbar>
+                      <img src='/logo-new.png' alt="CareConnect - Your Gateway to Health and Wellness" style={{ marginRight: '16px', height: '40px' }} />
+                      <IconButton 
+                        color="inherit" 
+                        onClick={handleLogout} 
+                        sx={{ marginLeft: 'auto' }}
+                      >
+                        <ExitToAppIcon />
+                      </IconButton>
+                    </Toolbar>
+                  </AppBar>
+                )}                
                   <Grid px={2} container spacing={0} justifyContent="center">
                     <Grid item xs={12} sm={7} md={5} lg={4} xl={3}>
                       <Box sx={{ my: 4, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
@@ -123,6 +126,7 @@ function App() {
                       </Box>
                     </Grid>
                   </Grid>
+                  </>
                 } />
               </Route>
             </Routes>
