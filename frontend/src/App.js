@@ -109,7 +109,7 @@ function App() {
                   <Grid px={2} container spacing={0} justifyContent="center">
                     <Grid item xs={12} sm={7} md={5} lg={4} xl={3}>
                       <Box sx={{ my: 4, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                        <Typography variant="h5" gutterBottom style={{ marginBottom: '24px' }}>                          Welcome, {userDetails.name}
+                        <Typography variant="h5" gutterBottom style={{ marginBottom: '24px' }}>                          Welcome, {userDetails.first_name}
                         </Typography>
                         <BookingForm userDetails={userDetails} handleOpenSnackbar={handleOpenSnackbar} onBookingSuccess={triggerAppointmentsRefresh} />
                       </Box>
