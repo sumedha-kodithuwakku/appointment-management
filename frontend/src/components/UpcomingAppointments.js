@@ -44,7 +44,7 @@ const UpcomingAppointments = ({ email, triggerRefresh }) => {
                     <React.Fragment key={index}>
                         <ListItem>
                             <ListItemAvatar>
-                                <Avatar>
+                                <Avatar sx={{ backgroundColor: '#1B4571' }}>
                                     <CalendarTodayIcon />
                                 </Avatar>
                             </ListItemAvatar>
